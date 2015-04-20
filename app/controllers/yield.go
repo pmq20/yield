@@ -22,6 +22,7 @@ import (
 	"github.com/revel/revel"
 	htmlTmpl "html/template"
 	"path/filepath"
+	"os"
 	"runtime"
 )
 
@@ -199,7 +200,15 @@ func (lc *Controller) RenderTemplateWithLayout(templatePath string) revel.Result
 }
 
 func loadLayouts() *revel.Error {
-	layoutTemplates = revel.NewTemplateLoader([]string{filepath.Join(revel.BasePath, LayoutPath)})
+	layoutPaths := make([]string, 0, 1+len(revel.Modules))
+	layoutPaths = append(layoutPaths, filepath.Join(revel.BasePath, LayoutPath))
+	for _, module := range revel.Modules {
+		potentialPath := filepath.Join(module.Path, LayoutPath)
+		if _, err := os.Stat(potentialPath); err == nil {
+			layoutPaths = append(layoutPaths, potentialPath)
+		}
+	}
+	layoutTemplates = revel.NewTemplateLoader(layoutPaths)
 	return layoutTemplates.Refresh()
 }
 

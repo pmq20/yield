@@ -3,12 +3,12 @@ package controllers
 import (
 	"code.google.com/p/go.crypto/bcrypt"
 	"database/sql"
-	"github.com/acsellers/yield/app/controllers"
+	"github.com/huacnlee/yield/app/controllers"
 	"github.com/coopernurse/gorp"
 	_ "github.com/mattn/go-sqlite3"
-	r "github.com/robfig/revel"
-	"github.com/robfig/revel/modules/db/app"
-	"github.com/robfig/revel/samples/booking/app/models"
+	r "github.com/revel/revel"
+	"github.com/revel/revel/modules/db/app"
+	"github.com/revel/revel/samples/booking/app/models"
 )
 
 var (

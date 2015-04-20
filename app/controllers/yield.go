@@ -2,10 +2,10 @@
 This library allows you to use yields and layouts similar to the Rails implementation for the current Revel template implementation.
 
 In your app.conf, add a line like
-module.yield=github.com/acsellers/yield
+module.yield=github.com/huacnlee/yield
 
 Then instead of starting your controllers from *revel.Controller,
-you can import "github.com/acsellers/yield/app/controllers" and then
+you can import "github.com/huacnlee/yield/app/controllers" and then
 use the struct yield.Controller to embed into your controllers.
 
 Note: the module in that import path is named yield not controllers, and
@@ -19,7 +19,7 @@ package yield
 import (
 	"bytes"
 	"fmt"
-	"github.com/robfig/revel"
+	"github.com/revel/revel"
 	htmlTmpl "html/template"
 	"path/filepath"
 	"runtime"
@@ -33,8 +33,10 @@ To set a default layout, take the format you wish that layout to apply for, i.e.
 that string to the name of the layout you want to render.
 */
 var (
-	LayoutPath      = "app/layouts"
-	DefaultLayout   = make(map[string]string)
+	LayoutPath      = "app/views/layouts"
+	DefaultLayout   = map[string]string{
+	  "html": "application.html",
+	}
 	layoutTemplates *revel.TemplateLoader
 )
 

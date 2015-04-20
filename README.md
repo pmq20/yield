@@ -7,10 +7,27 @@ Instruction for Use
 -------------------
 
 In your app.conf, add a line like
-module.yield=github.com/acsellers/yield
+
+```ini
+module.yield: github.com/huacnlee/yield
+```
+
+app/controllers/home.go
+
+```go
+package controllers
+
+import (
+  "github.com/huacnlee/yield/app/controllers"
+)
+
+type Home struct {
+  yield.Controller
+}
+```
 
 Then instead of starting your controllers from \*revel.Controller, 
-you can import "github.com/acsellers/yield/app/controllers" and then
+you can import "github.com/huacnlee/yield/app/controllers" and then
 use the struct yield.Controller to embed into your controllers. Note:
 the module in that import path is named yield not controllers, and 
 that is why you embed yield.Controller not controllers.Controller.
@@ -18,7 +35,7 @@ that is why you embed yield.Controller not controllers.Controller.
 The booking sample from revel was ported to use the basic yield
 mechanism and is available in the samples directory.
 
-Documentation is at [http://godoc.org/github.com/acsellers/yield/app/controllers](http://godoc.org/github.com/acsellers/yield/app/controllers).
+Documentation is at [http://godoc.org/github.com/huacnlee/yield/app/controllers](http://godoc.org/github.com/huacnlee/yield/app/controllers).
 
 Bugs
 ----

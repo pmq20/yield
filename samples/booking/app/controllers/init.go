@@ -1,8 +1,8 @@
 package controllers
 
 import (
-	"github.com/acsellers/yield/app/controllers"
-	"github.com/robfig/revel"
+	"github.com/huacnlee/yield/app/controllers"
+	"github.com/revel/revel"
 )
 
 func init() {
